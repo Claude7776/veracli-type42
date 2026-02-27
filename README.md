@@ -38,8 +38,8 @@ sudo apt install libssl-dev build-essential
 ### Compilation
 
 ```bash
-git clone https://github.com/VOTRE_USERNAME/veracli.git
-cd veracli
+git clone https://github.com/VOTRE_USERNAME/veracli-type42.git
+cd veracli-type42
 make
 ```
 
@@ -76,48 +76,48 @@ veracli/
 
 ## Bonnes pratiques implémentées
 
-*Utilisation exclusive de l'API EVP (recommandée par OpenSSL)
-*Vérifications systématiques des retours d'erreur
-*Nettoyage mémoire sensible (OPENSSL cleanse)
-*Gestion sécurisée des buffers
-*Architecture modulaire (séparation CLI / crypto)
+- **Utilisation exclusive de l'API EVP (recommandée par OpenSSL)**
+- **Vérifications systématiques des retours d'erreur**
+- **Nettoyage mémoire sensible (OPENSSL cleanse)**
+- **Gestion sécurisée des buffers**
+- **Architecture modulaire (séparation CLI / crypto)**
 
 ## Limitations actuelles (très importantes)
 
-*Mode CBC → pas d'authentification (vulnérable aux attaques par padding oracle si mal utilisé)
-*Pas d'AEAD (AES-GCM ou ChaCha20-Poly1305 serait préférable)
-*Pas de HMAC pour vérifier l'intégrité
-*Pas de protection contre la modification/suppression malveillante du fichier
-*Pas de gestion de volumes/conteneurs comme VeraCrypt
-*Pas de support pour les très gros fichiers (tout en RAM)
+- **Mode CBC → pas d'authentification (vulnérable aux attaques par padding oracle si mal utilisé)**
+- **Pas d'AEAD (AES-GCM ou ChaCha20-Poly1305 serait préférable)**
+- **Pas de HMAC pour vérifier l'intégrité**
+- **Pas de protection contre la modification/suppression malveillante du fichier**
+- **Pas de gestion de volumes/conteneurs comme VeraCrypt**
+- **Pas de support pour les très gros fichiers (tout en RAM)**
 
 ## Améliorations prévues
 
- *Migration vers AES-256-GCM (AEAD)
- *Ajout d'un HMAC-SHA256 pour l'authentification
- *Remplacement de PBKDF2 par Argon2id (plus résistant aux attaques GPU/ASIC)
- *Header structuré + version + paramètres
- *Support de conteneurs / volumes chiffrés
- *Option --output / --force / --verbose
- *Tests unitaires (check ou cmocka)
+- **Migration vers AES-256-GCM (AEAD)**
+- **Ajout d'un HMAC-SHA256 pour l'authentification**
+- **Remplacement de PBKDF2 par Argon2id (plus résistant aux attaques GPU/ASIC)**
+- **Header structuré + version + paramètres**
+- **Support de conteneurs / volumes chiffrés**
+- **Option --output / --force / --verbose**
+- **Tests unitaires (check ou cmocka)**
 
 ## Sécurité — À lire absolument ⚠️ 
 
 Ce programme est un excellent exercice d'apprentissage, mais ne doit pas être utilisé pour des données critiques sans les améliorations listées ci-dessus.
 Pour un usage réel, préférez :
 
-*VeraCrypt
-*age
-*rclone crypt
-*gocryptfs
-*7-Zip avec AES-256 + mot de passe fort
+- **VeraCrypt**
+- **age**
+- **rclone crypt**
+- **gocryptfs**
+- **7-Zip avec AES-256 + mot de passe fort**
 
 ## Auteur
 Développé avec ❤️ dans le cadre d'un approfondissement personnel en :
 
-*Cryptographie appliquée
-*Sécurité système
-*Développement bas niveau C
-*Bonne architecture logicielle
+- Cryptographie appliquée
+- Sécurité système
+- Développement bas niveau C
+- Bonne architecture logicielle
 
 N'hésite pas à ouvrir une issue ou une PR si tu veux contribuer !
