@@ -10,20 +10,21 @@
 #define KEY_SIZE 32
 #define ITERATIONS 200000
 
-void derive_key(const char *password, unsigned char *salt, unsigned char *key)
+void	derive_key(const char *password, unsigned char *salt, unsigned char *key)
 {
-    PKCS5_PBKDF2_HMAC(password, strlen(password),
-                      salt, SALT_SIZE,
-                      ITERATIONS,
-                      EVP_sha256(),
-                      KEY_SIZE,
-                      key);
+	PKCS5_PBKDF2_HMAC(password, strlen(password),
+		salt, SALT_SIZE,
+		ITERATIONS,
+		EVP_sha256(),
+		KEY_SIZE,
+		key);
 }
 
-int encrypt_file(const char *filename)
+int	encrypt_file(const char *filename)
 {
-    FILE *in = fopen(filename, "rb");
-    if (!in) return 1;
+    FILE	*in = fopen(filename, "rb");
+    if (!in)
+	    return 1;
 
     fseek(in, 0, SEEK_END);
     long filesize = ftell(in);
